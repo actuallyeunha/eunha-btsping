@@ -29,7 +29,6 @@ def respond():
 		Eu detecto sempre que os meninos entrarem em live no vlive.
 		Mando as notificacoes para o canal BTS Ping, la voce pode receber avisos de um jeito mais consistente e confiavel pq convenhamos q confiar no vlive nao da certo!
 		"""
-		bot.sendChatAction(chat_id=chat_id, action="typing")
 		sleep(1.5)
 		bot.sendMessage(chat_id=chat_id, text=bot_welcome, reply_to_message_id=msg_id)
 	else:
@@ -38,6 +37,8 @@ def respond():
 		"""
 
 	return 'ok'
+
+
 @app.route('/enablewatching', methods=['GET', 'POST'])
 def enable_watching():
 	while True:
@@ -45,7 +46,7 @@ def enable_watching():
 		
 		if detectType(lpost) == "VIDEO":
 			if checkLive(lpost) == True:
-				print("")
+				return "LIVE!!!!"
 				bot_live = """
 				Detectei uma live no canal do BTS do vlive! Vai conferir!
 				"""
@@ -53,6 +54,7 @@ def enable_watching():
 				sleep(7200)
 		else:
 			print("Probably not live...")
+
 
 
 @app.route('/setwebhook', methods=['GET', 'POST'])
