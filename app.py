@@ -54,6 +54,7 @@ def enable_watching():
 				sleep(7200)
 		else:
 			print("Probably not live...")
+			sleep(120)
 
 
 
