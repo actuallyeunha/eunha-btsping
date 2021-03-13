@@ -1,76 +1,46 @@
-from flask import Flask, request
-import telegram
-from btsping.credentials import bot_token, bot_user_name,URL
-# -- #
-import btsping.pingvlive as pvl
-# -- #
-global bot
-global TOKEN
-
+import requests
+from time import sleep
 # ---- #
-TOKEN = bot_token
-bot = telegram.Bot(token=TOKEN)
+import btsping.pingvlive as vl
+from btsping.credentials import bot_token
+# -- #
+token = bot_token
+# -- #
 
-app = Flask(__name__)
-# ---- #
-@app.route('/{}'.format(TOKEN), methods=['POST'])
-def respond():
-	update = telegram.Update.de_json(request.get_json(force=True), bot)
+def sendMessage(token, id, status):
+	livemessage = f'''
+	BTS ESTA EM LIVE! ‧₊˚✩彡.
+	Bts esta em live no vlive! Assista pelo app ou pelo link abaixo:
+	↳ https://www.vlive.tv/post/{vl.getLatestPost("FE619", "3498")}୭̥⋆*｡
+	'''
+	notlivemessage = '''
+	BTS NAO ESTA EM LIVE! ‧₊˚✩彡.
+	Mas quando estiver, assista pelo app ou pelo site:
+	↳ https://www.vlive.tv/channel/FE619 ୭̥⋆*｡
+	'''
 
-	chat_id = update.message.chat.id
-	msg_id = update.message.message_id
-
-	text = update.message.text.encode('utf-8').decode()
-
-	print("[BTSPing] New message:", text)
-
-	if text == "/start":
-		bot_welcome = """
-		Eu detecto sempre que os meninos entrarem em live no vlive.
-		Mando as notificacoes para o canal BTS Ping, la voce pode receber avisos de um jeito mais consistente e confiavel pq convenhamos q confiar no vlive nao da certo!
-		"""
-		sleep(1.5)
-		bot.sendMessage(chat_id=chat_id, text=bot_welcome, reply_to_message_id=msg_id)
+	if status == "live":
+		response = requests.post(url='https://api.telegram.org/bot{0}/sendMessage'.format(token), data ={'chat_id': id, 'text': livemessage}).json()
 	else:
-		bot_error = """
-		Oh oh... Alguma coisa deu errado! Verifique o comando e tente novamente!
-		"""
-
-	return 'ok'
+		response = requests.post(url='https://api.telegram.org/bot{0}/sendMessage'.format(token), data ={'chat_id': id, 'text': notlivemessage}).json()
 
 
-@app.route('/enablewatching', methods=['GET', 'POST'])
-def enable_watching():
-	while True:
-			lpost = getLatestPost("FE619", "3498")
-		
-		if detectType(lpost) == "VIDEO":
-			if checkLive(lpost) == True:
-				return "LIVE!!!!"
-				bot_live = """
-				Detectei uma live no canal do BTS do vlive! Vai conferir!
-				"""
-				bot.sendMessage(chat_id=1682719158, text=bot_live)
-				sleep(7200)
-		else:
-			print("Probably not live...")
-			sleep(120)
-
-
-
-@app.route('/setwebhook', methods=['GET', 'POST'])
-def set_webhook():
-	s = bot.setWebhook('{URL}{HOOK}'.format(URL=URL, HOOK=TOKEN))
-	if s:
-		return "[BTSPing] Webhook setup OK"
-	else:
-		return "[BTSPing] webhook setup failed"
-
-
-@app.route('/')
-def index():
-	return '.'
 # ---- #
 
 if __name__ == '__main__':
-	app.run(threaded=True)
+	while True:
+		lpost = vl.getLatestPost("FE619", "3498")
+
+		if vl.detectType(lpost) == "VIDEO":
+			if vl.checkLive(lpost) == True:
+				sendMessage(token, "-1001378910921", "live")
+				sleep(14400)
+				continue
+			else:
+				print("Last post is not a video!")
+				sleep(180)
+				continue
+		else:
+			print("Last post is not a video!")
+			sleep(180)
+			continue
