@@ -46,7 +46,7 @@ if __name__ == '__main__':
 				continue
 			else:
 				print("NAO ESTAO EM LIVE!")
-				sendMessage(token, "-1001378910921", "live", api)
+				sendMessage(token, "-1001378910921", "notlive", api)
 				sleep(180)
 				continue
 		else:
