@@ -1,6 +1,8 @@
 import requests
 from time import sleep
 # ---- #
+import tweepy
+# ---- #
 import btsping.pingvlive as vl
 from btsping.credentials import bot_token
 # -- #
