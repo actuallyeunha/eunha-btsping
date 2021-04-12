@@ -1,6 +1,8 @@
 # BTS Ping!
 BTS Ping! e um bot para o Telegram e Twitter que avisa em um canal especifico quando o BTS entrar em live no VLive!
 
+Beautify em progresso ;)
+
 ## Como participar?
 Por enquanto, o canal do telegram esta em fase beta, apenas as primeiras 100 pessoas que entrarem no link poderao participar.
 https://t.me/joinchat/c04Ofi_LA942MWIx
