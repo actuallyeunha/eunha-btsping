@@ -1,26 +1,18 @@
 # BTS Ping!
-BTS Ping! e um bot para o Telegram e Twitter que avisa em um canal especifico quando o BTS entrar em live no VLive!
-
-Beautify em progresso ;)
+<p>BTS Ping! é um bot para o Telegram e Twitter que tweeta e avisa em um canal especifico quando o BTS entrar em live no VLive!
 
 ## Como participar?
-Por enquanto, o canal do telegram esta em fase beta, apenas as primeiras 100 pessoas que entrarem no link poderao participar.
-https://t.me/joinchat/c04Ofi_LA942MWIx
+<p>É só entrar no nosso canal do Telegram e/ou ativar as notificações do bot no Twitter.
+São essas duas plataformas que o bot utiliza para avisar quando as lives são detectadas!
 
-Porem no twitter pode seguir e ativar as notificacoes do @bts_ping
-O bot vai automaticamente postar um tweet no momento em que ele detectar uma live no canal dos meninos!
-
-## Posso utilizar para fazer para outros grupos?
-Caso voce deseje utilizar para criar outro bot, fique a vontade, contanto que me de os creditos pelo pingvlive.py e aos criadores do pacote vlivepy, no qual eu baseei esse projeto todo!
-
-## Documentacao
-Em breve vou atualizar o pingvlive.py com os comentarios necessarios para poder utilizar as funcoes que estao la. Por favor aguarde!
+<p>Telegram: https://t.me/joinchat/6OAuX9iwh7hkZWY5
+<p>Twitter: https://twitter.com/bts_ping
 
 ## Contribua
-Caso voce queira ajudar no desenvolvimento, por favor fique a vontade para comprar um cafezinho para mim!
+<p>Caso voce queira ajudar no desenvolvimento, por favor, fique a vontade para comprar um cafézinho para mim!
 https://ko-fi.com/actuallyeunha
 
-(Note que nao e necessario que voce doe para utilizar o servico!)
+<p>(Note que não é necessário que você doe para utilizar o serviço!)
 
 ## License
 [GPL-3.0](https://choosealicense.com/licenses/gpl-3.0/)
