@@ -7,4 +7,3 @@ btsping/pingvlive.py
 app.py
 *.pyc
 beautify/btsping/credentials.json
-readme.md
