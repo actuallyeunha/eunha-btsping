@@ -1,9 +1,2 @@
-
-readme.md
-readme.md
-main/btsping/pingvlive.py
-main/app.py
-btsping/pingvlive.py
-app.py
 *.pyc
 beautify/btsping/credentials.json
